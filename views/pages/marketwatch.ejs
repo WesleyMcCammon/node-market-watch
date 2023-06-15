@@ -39,15 +39,13 @@
                 <div class="section-container">
                     <% model.forEach((m) => { %>
                         <div style="border:solid 1px #000;border-radius:4px;margin:5px">
-                        <div style="padding:8px">
+                            <div style="padding:8px">
                             <div style="padding:3px;">
                                 <div style="display:grid;grid-template-columns:30fr 65fr 05fr">
-                                    <div style="color:white;font-size:1.1em;"><%= m.instrument %></div>
-                                    <div style="font-size:.8em;color:white;position:relative;top:7px;display:grid;grid-template-columns:45fr 45fr 10fr;">
-                                        <div style="color:#ababab">bid&nbsp;<span>12345678</span></div>
-                                        <div style="color:#ababab">ask&nbsp;<span>12345678</span></div>
-                                        <div style="color:rgb(10, 196, 10)">+1.25%</div>
+                                    <div style="color:white;font-size:1.1em;">
+                                        <%= m.instrument %>
                                     </div>
+                                    <%- include('../partials/bidAsk', {bid: '100.25', ask: '100.50', percentChange: '1.22%'}); %>
                                 </div>
                             </div>
                             <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
@@ -55,13 +53,7 @@
                             </div>
                             <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
                                 <% m.priceLevels.forEach((p) => { %>
-                                    <div style="display: grid; grid-template-columns: 1fr; gap: 4px; border: 1px solid rgb(100, 100, 100); border-radius: 4px; margin: 3px; padding: 3px 6px; font-size: 0.8em; color: white; ">
-                                        <div style="font-size:.8em;"><%= p.displayName %></div>
-                                        <div style="display:grid;grid-template-columns:1fr 1fr">
-                                            <div><%= p.value %></div>     
-                                            <div style="text-align:right">0.00</div>
-                                        </div>            
-                                    </div>
+                                    <%- include('../partials/priceChip', {displayName: p.displayName, priceLevel: p.value, priceLevelDiff: '67.25'}); %>
                                 <% }) %>
                             </div>
                             <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
@@ -69,12 +61,13 @@
                             </div>
                             <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
                                 <% m.alerts.forEach((a) => { %>
-                                    <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <%- include('../partials/alertChip', {displayName: a.displayName, dateTime: a.dateTime.toLocaleTimeString("en-us", {})}); %>
+                                    <!-- <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
                                         <div style="font-size:.8em;"><%= a.displayName %></div>
                                         <div>
                                             <div style="font-size:.8em;"><%= a.dateTime.toLocaleTimeString("en-us", {}) %></div>   
                                         </div>            
-                                    </div>
+                                    </div> -->
                                 <% }) %>
                             </div>
                         </div> 

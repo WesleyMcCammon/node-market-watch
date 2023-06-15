@@ -1,7 +1,7 @@
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; border: 1px solid rgb(100, 100, 100); border-radius: 4px; margin: 3px; padding: 3px 6px; color: white; ">
-    <div style="font-size:.7em;color:#ababab;"><%= typeof displayName !== 'undefined' ? displayName : '' %></div>
-    <div style="font-size:.7em;color:#ababab;"><%= typeof priceLevel !== 'undefined' ? priceLevel : '' %></div> 
+<div class="pricechip" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; border: 1px solid rgb(100, 100, 100); border-radius: 4px; margin: 3px 0px 3px 0px; padding: 3px 6px; color: white; ">
+    <div class="pricechipname" style="font-size:.7em;color:#ababab;"><%= typeof displayName !== 'undefined' ? displayName : '' %></div>
+    <div id="<%= typeof priceLevelId !== 'undefined' ? priceLevelId : '' %>" style="font-size:.7em;color:#ababab;"><%= typeof priceLevel !== 'undefined' ? priceLevel : '' %></div> 
     <div style="font-size:.9em;grid-column: 1 / span 2;padding-right:3px;margin-right:3px;">    
-        <div style="text-align:right"><%= typeof priceLevelDiff !== 'undefined' ? priceLevelDiff : '' %></div>
+        <div id="<%= typeof priceLevelDiffId !== 'undefined' ? priceLevelDiffId : 'yo' %>" style="text-align:right"><%= typeof priceLevelDiff !== 'undefined' ? priceLevelDiff : '' %></div>
     </div>            
 </div>

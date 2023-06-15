@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
         <style>
             .container {
                 background-color: #444444;
@@ -25,9 +26,42 @@
             }
         </style>
         <script type="text/javascript">
-            const formatTime = (value) => {
-                return 'yo';
-            };
+
+            // window.addEventListener('message', (message) => {
+            //     console.log(`data ${message.data.time}`);
+            // });
+
+            function updatePriceLevels(instrumentId, bid, ask) {
+                const pricechips = document.getElementsByClassName('pricechip');
+                for(var index = 0; index < pricechips.length; index++) {
+                    const pricechipname = pricechips[index].children[0].innerHTML;
+                    const priceLevel = document.getElementById(`${instrumentId}${pricechipname}priceLevel`);
+                    const priceLevelDiff = document.getElementById(`${instrumentId}${pricechipname}priceLevelDiff`);
+                    const priceLevelValue = parseFloat(priceLevel.innerHTML);
+                    const priceLevelDiffValue = priceLevelValue - bid
+                    priceLevelDiff.innerHTML = priceLevelDiffValue.toFixed(2);
+                }
+            }
+            function setBidAsk(instrumentId, bid, ask) {
+                document.getElementById(`${instrumentId}bid`).innerHTML = bid.toFixed(2);
+                document.getElementById(`${instrumentId}ask`).innerHTML = ask.toFixed(2);
+            }
+            function repeatingFunc() {
+                
+                const hiddenInstruments = document.getElementsByName('instrument');
+                for(let index = 0; index < hiddenInstruments.length; index++) {
+                    const instrumentId = hiddenInstruments[index].value.replace(' ', '-');
+                    const bid = document.getElementById(`${instrumentId}bid`).innerHTML;
+                    const ask = document.getElementById(`${instrumentId}ask`).innerHTML;
+                    const bidValue = parseFloat(bid) + .25;
+                    const askValue = parseFloat(ask) + .25;
+                    setBidAsk(instrumentId, bidValue, askValue);
+                    updatePriceLevels(instrumentId, bidValue, askValue);
+                }
+                setTimeout(repeatingFunc, 1000);
+            }
+
+            setTimeout(repeatingFunc, 1000);
         </script>
     </head>
     <body class="container">
@@ -38,6 +72,7 @@
                 </div>
                 <div class="section-container">
                     <% model.forEach((m) => { %>
+                        <input name="instrument" type="hidden" value="<%= m.instrument %>">
                         <div style="border:solid 1px #000;border-radius:4px;margin:5px">
                             <div style="padding:8px">
                             <div style="padding:3px;">
@@ -45,7 +80,11 @@
                                     <div style="color:white;font-size:1.1em;">
                                         <%= m.instrument %>
                                     </div>
-                                    <%- include('../partials/bidAsk', {bid: '100.25', ask: '100.50', percentChange: '1.22%'}); %>
+                                    <%- include('../partials/bidAsk', {
+                                        bidId: m.instrument.replace(' ', '-') +  'bid',
+                                        askId: m.instrument.replace(' ', '-') +  'ask',
+                                        bid: '4125', ask: '4125.5', 
+                                        percentChange: '1.22%'}); %>
                                 </div>
                             </div>
                             <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
@@ -53,7 +92,10 @@
                             </div>
                             <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
                                 <% m.priceLevels.forEach((p) => { %>
-                                    <%- include('../partials/priceChip', {displayName: p.displayName, priceLevel: p.value, priceLevelDiff: '67.25'}); %>
+                                    <%- include('../partials/priceChip', {
+                                        priceLevelId: m.instrument.replace(' ', '-') + p.displayName.replace(' ', '-') + 'priceLevel', 
+                                        priceLevelDiffId: m.instrument.replace(' ', '-') + p.displayName.replace(' ', '-') + 'priceLevelDiff', 
+                                        displayName: p.displayName, priceLevel: p.value, priceLevelDiff: '67.25'}); %>
                                 <% }) %>
                             </div>
                             <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">

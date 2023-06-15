@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const amqplib = require('amqplib');
 const app = express()
 const port = 3100
 
@@ -25,7 +26,7 @@ app.get('/marketwatch', (req, res) => {
   var marketWatchData = [
     { instrument: 'ES 09-23', 
       priceLevels: [ 
-        { name: 'ST Pivot R3', displayName: 'R3', value: 125.50},        
+        { name: 'ST Pivot R3', displayName: 'R3', value: 4325.50},        
         { name: 'ST Pivot R2', displayName: 'R2', value: 251.25},
         { name: 'VWAP', displayName: 'VWAP', value: 321.5},
         { name: 'Prev High', displayName: 'PH', value: 125.75}
@@ -67,13 +68,13 @@ app.get('/marketwatch', (req, res) => {
     },
     { instrument: 'YM 09-23', 
       priceLevels: [ 
-        { name: 'ST Pivot R3', displayName: 'R3', value: 125.50},        
+        { name: 'ST Pivot R3', displayName: 'R3', value: 38105},        
         { name: 'ST Pivot R2', displayName: 'R2', value: 251.25},
         { name: 'VWAP', displayName: 'VWAP', value: 321.5},
         { name: 'Prev High', displayName: 'PH', value: 125.75}
       ],
       alerts: [
-        { name: 'Alert 1', displayName: 'Alert 1', dateTime: new Date()},
+        { name: 'Alert 1', displayName: 'Alert 1', dateTime: new Date(2023, 11, 5)},
         { name: 'Alert 2', displayName: 'Alert 2', dateTime: new Date()},
         { name: 'Alert 3', displayName: 'Alert 3', dateTime: new Date()},
         { name: 'Alert 4', displayName: 'Alert 4', dateTime: new Date()},
@@ -109,7 +110,7 @@ app.get('/marketwatch', (req, res) => {
     },
     { instrument: 'ZB 09-23', 
       priceLevels: [ 
-        { name: 'ST Pivot R3', displayName: 'R3', value: 125.50},        
+        { name: 'ST Pivot R3', displayName: 'R3', value: 1.12345},        
         { name: 'ST Pivot R2', displayName: 'R2', value: 251.25},
         { name: 'VWAP', displayName: 'VWAP', value: 321.5},
         { name: 'Prev High', displayName: 'PH', value: 125.75}
@@ -152,7 +153,8 @@ app.get('/marketwatch', (req, res) => {
   ];
 
   res.render('pages/marketwatch', {
-    model: marketWatchData
+    model: marketWatchData,
+    test: amqplib
   })
 });
 // app.use(express.static('public'))

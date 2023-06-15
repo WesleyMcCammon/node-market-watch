@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container {
+                background-color: #444444;
+            }
+            .container > div:nth-child(1) {
+                display:grid;grid-template-columns:80fr 20fr;
+            }
+            .section-title {
+                margin-left:5px;color:white;font-size:1.3em;
+            }
+            .section-container {
+                display:grid;grid-template-columns:1fr 1fr 1fr;font-family:verdana;font-size:1em;color:white;
+            }
+            .price-chip {
+                border:solid 1px #000;border-radius:4px;margin:5px;
+            }
+            .price-chip-header {
+                display:grid;grid-template-columns:1fr 1fr;padding-left:3px;
+            }
+            .price-chip-header > .title {
+                position:relative;top:5px;color:white;font-size:1.1em;
+            }
+        </style>
+    </head>
+    <body class="container">
+        <div>
+            <div>
+                <div class="section-title">
+                    Market Watch Dashboard
+                </div>
+                <div class="section-container">
+                        <div class="price-chip" style="padding:7px">
+                            <div class="price-chip-header">
+                                <div class="title">RTY 09-23</div>
+                                <div style="display:grid;grid-template-columns: 65fr 35fr;">
+                                    <div style="font-size:.7em;display:grid;grid-template-columns: 1fr 1fr;position: relative;top:5px;padding-bottom:10px">
+                                        <div style="color:#ababab;padding: 4px 0px 4px 0px;">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div style="color:#ababab;padding: 4px 0px 4px 0px;">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                    </div>
+                                    <div>
+                                        <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10);position: relative;top:8px;">&nbsp;+1.25%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>price levels</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                        <div id="ES09-23-STPivotR3-price-alert" style="display: grid; grid-template-columns: 1fr; gap: 4px; border: 1px solid rgb(100, 100, 100); border-radius: 4px; margin: 3px; padding: 3px 6px; font-size: 0.8em; color: white; background-color: indianred;">
+                                            <div style="font-size:.8em;">ST Pivot R3</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>125.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="ES09-23-STPivotR2-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R2</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>100.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="ES09-23-STPivotR1-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R1</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>95.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                            </div>
+                            <div style="grid-column:1 / span 5;font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>alerts</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">VWAP</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price-chip">
+                        <div style="padding:8px">
+                            <div style="padding:3px;">
+                                <div style="display:grid;grid-template-columns:1fr 1fr">
+                                    <div style="color:white;font-size:1.1em;">
+                                        <div style="position: relative;top:8px;">NQ 09-23</div>
+                                    </div>
+                                    <div style="display:grid;grid-template-columns: 65fr 35fr;">
+                                        <div style="font-size:.7em;">
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        </div>
+                                        <div>
+                                            <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10);position: relative;top:8px;">&nbsp;+1.25%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div style="display:grid;grid-template-columns:25fr 75fr">
+                                    <div style="color:white;font-size:1.1em;">NQ 09-23</div>
+                                    <div style="font-size:.8em;color:white;position:relative;top:7px;display:grid;grid-template-columns:45fr 45fr 10fr;">
+                                        <div style="color:#ababab">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div style="color:#ababab">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10)">&nbsp;+1.25%</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>price levels</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                        <div id="NQ09-23-STPivotR3-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R3</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>125.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="NQ09-23-STPivotR2-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R2</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>100.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="NQ09-23-STPivotR1-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R1</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>95.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                            </div>
+                            <div style="grid-column:1 / span 5;font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>alerts</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">VWAP</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="price-chip">
+                        <div style="padding:8px">
+                            <div style="padding:3px;">
+                                <div style="display:grid;grid-template-columns:1fr 1fr">
+                                    <div style="color:white;font-size:1.1em;">
+                                        <div style="position: relative;top:8px;">YM 09-23</div>
+                                    </div>
+                                    <div style="display:grid;grid-template-columns: 65fr 35fr;">
+                                        <div style="font-size:.7em;">
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        </div>
+                                        <div>
+                                            <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10);position: relative;top:8px;">&nbsp;+1.25%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div style="display:grid;grid-template-columns:25fr 75fr">
+                                    <div style="color:white;font-size:1.1em;">YM 09-23</div>
+                                    <div style="font-size:.8em;color:white;position:relative;top:7px;display:grid;grid-template-columns:45fr 45fr 10fr;">
+                                        <div style="color:#ababab">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div style="color:#ababab">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10)">&nbsp;+1.25%</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>price levels</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                        <div id="YM09-23-STPivotR3-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R3</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>125.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="YM09-23-STPivotR2-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R2</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>100.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="YM09-23-STPivotR1-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R1</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>95.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                            </div>
+                            <div style="grid-column:1 / span 5;font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>alerts</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">VWAP</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="price-chip">
+                        <div style="padding:8px">
+                            <div style="padding:3px;">
+                                <div style="display:grid;grid-template-columns:1fr 1fr">
+                                    <div style="color:white;font-size:1.1em;">
+                                        <div style="position: relative;top:8px;">RTY 09-23</div>
+                                    </div>
+                                    <div style="display:grid;grid-template-columns: 65fr 35fr;">
+                                        <div style="font-size:.7em;">
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        </div>
+                                        <div>
+                                            <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10);position: relative;top:8px;">&nbsp;+1.25%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div style="display:grid;grid-template-columns:25fr 75fr">
+                                    <div style="color:white;font-size:1.1em;">RTY 09-23</div>
+                                    <div style="font-size:.8em;color:white;position:relative;top:7px;display:grid;grid-template-columns:45fr 45fr 10fr;">
+                                        <div style="color:#ababab">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div style="color:#ababab">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10)">&nbsp;+1.25%</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>price levels</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                        <div id="RTY09-23-STPivotR3-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R3</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>125.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="RTY09-23-STPivotR2-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R2</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>100.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="RTY09-23-STPivotR1-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R1</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>95.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                            </div>
+                            <div style="grid-column:1 / span 5;font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>alerts</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">VWAP</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="price-chip">
+                        <div style="padding:8px">
+                            <div style="padding:3px;">
+                                <div style="display:grid;grid-template-columns:1fr 1fr">
+                                    <div style="color:white;font-size:1.1em;">
+                                        <div style="position: relative;top:8px;">CL 09-23</div>
+                                    </div>
+                                    <div style="display:grid;grid-template-columns: 65fr 35fr;">
+                                        <div style="font-size:.7em;">
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        </div>
+                                        <div>
+                                            <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10);position: relative;top:8px;">&nbsp;+1.25%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div style="display:grid;grid-template-columns:25fr 75fr">
+                                    <div style="color:white;font-size:1.1em;">CL 09-23</div>
+                                    <div style="font-size:.8em;color:white;position:relative;top:7px;display:grid;grid-template-columns:45fr 45fr 10fr;">
+                                        <div style="color:#ababab">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div style="color:#ababab">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10)">&nbsp;+1.25%</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>price levels</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                        <div id="CL09-23-STPivotR3-price-alert" style="display: grid; grid-template-columns: 1fr; gap: 4px; border: 1px solid rgb(100, 100, 100); border-radius: 4px; margin: 3px; padding: 3px 6px; font-size: 0.8em; color: white; background-color: seagreen;">
+                                            <div style="font-size:.8em;">ST Pivot R3</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>125.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="CL09-23-STPivotR2-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R2</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>100.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="CL09-23-STPivotR1-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R1</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>95.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                            </div>
+                            <div style="grid-column:1 / span 5;font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>alerts</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">VWAP</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="price-chip">
+                        <div style="padding:8px">
+                            <div style="padding:3px;">
+                                <div style="display:grid;grid-template-columns:1fr 1fr">
+                                    <div style="color:white;font-size:1.1em;">
+                                        <div style="position: relative;top:8px;">GC 09-23</div>
+                                    </div>
+                                    <div style="display:grid;grid-template-columns: 65fr 35fr;">
+                                        <div style="font-size:.7em;">
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        </div>
+                                        <div>
+                                            <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10);position: relative;top:8px;">&nbsp;+1.25%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div style="display:grid;grid-template-columns:25fr 75fr">
+                                    <div style="color:white;font-size:1.1em;">GC 09-23</div>
+                                    <div style="font-size:.8em;color:white;position:relative;top:7px;display:grid;grid-template-columns:45fr 45fr 10fr;">
+                                        <div style="color:#ababab">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div style="color:#ababab">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10)">&nbsp;+1.25%</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>price levels</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                        <div id="GC09-23-STPivotR3-price-alert" style="display: grid; grid-template-columns: 1fr; gap: 4px; border: 1px solid rgb(100, 100, 100); border-radius: 4px; margin: 3px; padding: 3px 6px; font-size: 0.8em; color: white; background-color: rgb(110, 110, 25);">
+                                            <div style="font-size:.8em;">ST Pivot R3</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>125.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="GC09-23-STPivotR2-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R2</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>100.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="GC09-23-STPivotR1-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R1</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>95.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                            </div>
+                            <div style="grid-column:1 / span 5;font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>alerts</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">VWAP</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="price-chip">
+                        <div style="padding:8px">
+                            <div style="padding:3px;">
+                                <div style="display:grid;grid-template-columns:1fr 1fr">
+                                    <div style="color:white;font-size:1.1em;">
+                                        <div style="position: relative;top:8px;">6E 09-23</div>
+                                    </div>
+                                    <div style="display:grid;grid-template-columns: 65fr 35fr;">
+                                        <div style="font-size:.7em;">
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        </div>
+                                        <div>
+                                            <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10);position: relative;top:8px;">&nbsp;+1.25%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div style="display:grid;grid-template-columns:25fr 75fr">
+                                    <div style="color:white;font-size:1.1em;">ZB 09-23</div>
+                                    <div style="font-size:.8em;color:white;position:relative;top:7px;display:grid;grid-template-columns:45fr 45fr 10fr;">
+                                        <div style="color:#ababab">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div style="color:#ababab">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10)">&nbsp;+1.25%</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>price levels</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                        <div id="ZB09-23-STPivotR3-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R3</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>125.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="ZB09-23-STPivotR2-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R2</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>100.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="ZB09-23-STPivotR1-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R1</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>95.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                            </div>
+                            <div style="grid-column:1 / span 5;font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>alerts</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">VWAP</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="price-chip">
+                        <div style="padding:8px">
+                            <div style="padding:3px;">
+                                
+                                <div style="display:grid;grid-template-columns:1fr 1fr">
+                                    <div style="color:white;font-size:1.1em;">
+                                        <div style="position: relative;top:8px;">ZB 09-23</div>
+                                    </div>
+                                    <div style="display:grid;grid-template-columns: 65fr 35fr;">
+                                        <div style="font-size:.7em;">
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                            <div style="color:#ababab;padding: 4px 0px 4px 0px;">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        </div>
+                                        <div>
+                                            <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10);position: relative;top:8px;">&nbsp;+1.25%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div style="display:grid;grid-template-columns:25fr 75fr">
+                                    <div style="color:white;font-size:1.1em;">ZN 09-23</div>
+                                    <div style="font-size:.8em;color:white;position:relative;top:7px;display:grid;grid-template-columns:45fr 45fr 10fr;">
+                                        <div style="color:#ababab">bid&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div style="color:#ababab">ask&nbsp;<span>12345678&nbsp;</span></div>
+                                        <div id="ES09-23-dailychange" style="color:rgb(10, 196, 10)">&nbsp;+1.25%</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div style="font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>price levels</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                        <div id="ZN09-23-STPivotR3-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R3</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>125.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="ZN09-23-STPivotR2-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R2</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>100.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                                        <div id="ZN09-23-STPivotR1-price-alert" style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;font-size:.8em;color:#ababab;">
+                                            <div style="font-size:.8em;">ST Pivot R1</div>
+                                            <div style="display:grid;grid-template-columns:1fr 1fr">
+                                                <div>95.5</div>     
+                                                <div style="text-align:right">0.00</div>
+                                            </div>            
+                                        </div>
+                            </div>
+                            <div style="grid-column:1 / span 5;font-size:.8em;font-variant:small-caps;background-color:rgb(9, 57, 95);color:rgb(62, 156, 233);padding:3px;">
+                                <div>alerts</div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">VWAP</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr;grid-gap:4px;border:solid 1px #646464;border-radius:4px;margin:3px;padding:3px 6px 3px 6px;;font-size:.8em;color:#ababab;">
+                                    <div style="font-size:.8em;">ST Pivot Pp</div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr">
+                                        <div style="font-size:.8em;">11:16 AM</div>   
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                </div> 
+            </div>
+            <div>
+                <div style="margin-left:5px;color:white;font-size:1.3em;">
+                    Alerts
+                </div>
+            </div>
+        </div>
+    </body>
+    <script
+          src="https://code.jquery.com/jquery-3.7.0.js"
+          integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+          crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    </script>
+</html>

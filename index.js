@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const amqplib = require('amqplib');
+var EventSource = require('eventsource')
 const app = express()
 const port = 3100
 
@@ -154,23 +154,76 @@ app.get('/marketwatch', (req, res) => {
 
   res.render('pages/marketwatch', {
     model: marketWatchData,
-    test: amqplib
+    events: new EventSource('http://localhost:3500/events')
   })
 });
-// app.use(express.static('public'))
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
+function start() {
+  const events = new EventSource('http://localhost:3500/events');
 
-// app.get('/testpage', (req, res) => {
-//     res.sendFile(path.join(__dirname, './public/testpage.html'));
-// });
+  events.onmessage = (event) => {
+    console.log(event.data)
+  };
+}
 
-// app.get('/marketwatch', (req, res) => {
-//     res.sendFile(path.join(__dirname, './public/marketwatch.html'));
+// (async () => {
+//   debugger;
+//   const events = new EventSource('http://localhost:3500/events');
+
+//   events.onmessage = (event) => {
+//     const parsedData = JSON.parse(event.data);
+//     setFacts((facts) => facts.concat(parsedData));
+//     console.log('here');
+//   };
+
+//   setListening(true);
 // });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+
+async function rabbitMQConsumer(a) {
+  // debugger;
+  // const connection = await a.connect('amqplib://localhost:5672');
+  // const channel = await connection.createChannel();
+  // const queue = channel.assertQueue('nt8_wbmpivotdiff');
+
+  // channel.consume('nt8_wbmpivotdiff', (job) => {
+  //     debugger;
+  //     let data = JSON.parse(job.content);
+  //     console.log(data);
+  //     channel.ack(job);
+  // });
+
+  // console.log('Waiting for the message!');
+}
+
+// (async () => {
+//   let connection;
+//   try {
+//     const connection = await amqp.connect("amqp://localhost:5672");
+//     const channel = await connection.createChannel();
+
+//     process.once("SIGINT", async () => {
+//       await channel.close();
+//       await connection.close();
+//     });
+
+//     await channel.assertQueue('nt8_wbmpivotdiff', { durable: false });
+//     await channel.consume(
+//       'nt8_wbmpivotdiff',
+//       (message) => {
+//         if (message) {
+//           console.log(message);
+//         }
+//       },
+//       { noAck: true }
+//     );
+//   } catch (err) {
+//     console.warn(err);
+//   } finally {
+//     if (connection) await connection.close();
+//   }
+// })();

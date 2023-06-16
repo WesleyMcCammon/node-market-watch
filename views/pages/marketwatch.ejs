@@ -26,11 +26,16 @@
             }
         </style>
         <script type="text/javascript">
+            
+                function start() {
+                // const events = new EventSource('http://localhost:3500/events');
 
-            // window.addEventListener('message', (message) => {
-            //     console.log(`data ${message.data.time}`);
-            // });
+                events.onmessage = (event) => {
+                    console.log('marketwatch ' + event.data)
+                };
+                }
 
+                start();
             function updatePriceLevels(instrumentId, bid, ask) {
                 const pricechips = document.getElementsByClassName('pricechip');
                 for(var index = 0; index < pricechips.length; index++) {
@@ -61,6 +66,52 @@
                 setTimeout(repeatingFunc, 1000);
             }
 
+            // (async () => {
+            //     let connection;
+            //     try {
+            //         const connection = await amqp.connect("amqp://localhost:5672");
+            //         const channel = await connection.createChannel();
+
+            //         process.once("SIGINT", async () => {
+            //         await channel.close();
+            //         await connection.close();
+            //         });
+
+            //         await channel.assertQueue('nt8_wbmpivotdiff', { durable: false });
+            //         await channel.consume(
+            //         'nt8_wbmpivotdiff',
+            //         (message) => {
+            //             if (message) {
+            //                 debugger;
+            //             console.log(message);
+            //             }
+            //         },
+            //         { noAck: true }
+            //         );
+            //     } catch (err) {
+            //         console.warn(err);
+            //     } finally {
+            //         if (connection) await connection.close();
+            //     }
+            //     })();
+            
+            // async function rabbitMQConsumer(amqplib) {
+            //     const connection = await amqplib.connect('amqplib://localhost:5672');
+            //     const channel = await connection.createChannel();
+            //     const queue = channel.assertQueue('nt8_wbmpivotdiff');
+
+            //     channel.consume('nt8_wbmpivotdiff', (job) => {
+            //         debugger;
+            //         let data = JSON.parse(job.content);
+            //         console.log(data);
+            //         channel.ack(job);
+            //     });
+
+            //     console.log('Waiting for the message!');
+            // }
+            
+            // debugger;
+            // rabbitMQConsumer(amqplib);
             setTimeout(repeatingFunc, 1000);
         </script>
     </head>
